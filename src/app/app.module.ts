@@ -22,13 +22,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './layout/app_header/header.component';
 import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
 import { ProductComponent } from './pages/product/product.component';
+import { FooterComponent } from './layout/app_footer/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ThemeToggleIconComponent,
-    ProductComponent
+    ProductComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
