@@ -4,35 +4,42 @@
   <!-- Store Link and Theme Toggle Icon Section -->
   <div class="flex items-center">
     <a class="mr-4 text-xl" routerLink="/">2nd-Store</a>
-    <app-theme-toggle-icon class="mt-2"></app-theme-toggle-icon>
+
+    <!-- Main Dropdown Menu -->
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="mainMenu"
+      class="text-sm p-1"
+      aria-label="Menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #mainMenu="matMenu">
+      <!-- Product Menu -->
+      <button mat-menu-item [matMenuTriggerFor]="products">Products</button>
+      <mat-menu #products="matMenu">
+        <button mat-menu-item routerLink="/products">All Products</button>
+        <button mat-menu-item routerLink="/deals">Promotions</button>
+      </mat-menu>
+
+      <!-- Category Menu -->
+      <button mat-menu-item [matMenuTriggerFor]="categories">Categories</button>
+      <mat-menu #categories="matMenu">
+        <button mat-menu-item routerLink="/categories">All Categories</button>
+        <button mat-menu-item routerLink="/deals">Promotions</button>
+      </mat-menu>
+
+      <!-- Explore Menu -->
+      <button mat-menu-item [matMenuTriggerFor]="explore">
+        Explore Our Services
+      </button>
+      <mat-menu #explore="matMenu">
+        <button mat-menu-item routerLink="/news">News</button>
+        <button mat-menu-item routerLink="/contacts">Contact</button>
+      </mat-menu>
+    </mat-menu>
   </div>
-
-  <!-- Product Menu -->
-  <button mat-icon-button [matMenuTriggerFor]="products" class="text-sm p-1">
-    <span class="text-sm">Products</span>
-  </button>
-  <mat-menu #products="matMenu">
-    <button mat-menu-item routerLink="/products">All Products</button>
-    <button mat-menu-item routerLink="/deals">Promotions</button>
-  </mat-menu>
-
-  <!-- Category Menu -->
-  <button mat-icon-button [matMenuTriggerFor]="categories" class="text-sm p-1">
-    <span class="text-sm">Categories</span>
-  </button>
-  <mat-menu #categories="matMenu">
-    <button mat-menu-item routerLink="/categories">All Categories</button>
-    <button mat-menu-item routerLink="/deals">Promotions</button>
-  </mat-menu>
-
-  <!-- Explore Menu -->
-  <button mat-icon-button [matMenuTriggerFor]="explore" class="text-sm p-1">
-    <span class="text-sm">Explore Our Services</span>
-  </button>
-  <mat-menu #explore="matMenu">
-    <button mat-menu-item routerLink="/news">News</button>
-    <button mat-menu-item routerLink="/contacts">Contact</button>
-  </mat-menu>
 
   <div class="flex items-center">
     <!-- Cart Button -->
@@ -46,7 +53,7 @@
       >
     </button>
     <mat-menu #cart="matMenu">
-      <div class="p-3 divide-y divide-solid">
+      <div class="p-3 divide-y divide-solid space-x-5">
         <div class="pb-3 flex justify-between">
           <span class="mr-16">{{ 10 }} item(s)</span>
           <a routerLink="cart">View Cart</a>
@@ -87,9 +94,7 @@
 
     <!-- Profile Button -->
     <button mat-icon-button [matMenuTriggerFor]="profile">
-      <mat-icon 
-      aria-hidden="false" 
-      aria-label="profile icon"
+      <mat-icon aria-hidden="false" aria-label="profile icon"
         >account_circle</mat-icon
       >
     </button>
@@ -97,5 +102,8 @@
       <button mat-menu-item routerLink="/login">Login</button>
       <button mat-menu-item routerLink="/signup">Signup</button>
     </mat-menu>
+
+    <!-- Theme Toggle Icon Section -->
+    <app-theme-toggle-icon class="mt-0"></app-theme-toggle-icon>
   </div>
 </mat-toolbar>

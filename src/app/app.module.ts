@@ -21,12 +21,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './layout/app_header/header.component';
 import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ThemeToggleIconComponent
+    ThemeToggleIconComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
