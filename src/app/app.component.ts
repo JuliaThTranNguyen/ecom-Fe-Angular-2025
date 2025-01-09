@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecom-store';
+
+  
 }
+
+
+console.log('Running from: app.component.ts. Status: 200');
