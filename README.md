@@ -5,7 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 --------------------------------------------------------------------
 
 ## Project installation:
-[please visit this link for installation instructions](`./project_installation.md`)
+[Please visit this link for installation instructions](./project_installation.md)
 
 --------------------------------------------------------------------
 
