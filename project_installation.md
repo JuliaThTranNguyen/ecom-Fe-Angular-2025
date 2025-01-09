@@ -48,13 +48,13 @@ Other fake store APIs, such as:
 
 It has all of the products, categories, users data & authentication process to be followed.
 
-- Otherwise, you can create a Backend App to store & manage your own DB schema. THe Backend app can be written in any language you prefer.
+Otherwise, you can create a Backend App to store & manage your own DB schema. THe Backend app can be written in any language you prefer.
 
 ---
 
 # Environment Setup:
 
-[Read this documentation before proceeding the next step](`./env_setup.md`)
+[Read this documentation before proceeding the next step](./env_setup.md)
 
 ---
 
@@ -73,7 +73,9 @@ ng new ecom-store --routing --standalone=false
 - --routing: Creates a routing module.
 
 Review these selections below when creating a new project:
-[picture here]
+
+![Screenshot from 2025-01-09 07-24-11](https://github.com/user-attachments/assets/5e425065-b624-4a81-86da-9c1d3156955f)
+
 
 2/ Navigate to the project directory & open it with VSCode:
 
@@ -100,22 +102,20 @@ To dowload Angular Material UI, run:
 ng add @angular/material
 ```
 
-[show picture here]
-Type 'Y/y' to install the package.
+Review the screenshot below:
 
-[other picture here]
-Choose any of the following options to set the default theme.
-
-[other picture here]
-Click on 'y' to enable global typography style & then select `Include & enable ` for Angular animation module.
+![Screenshot from 2025-01-09 07-43-04](https://github.com/user-attachments/assets/e5fe27e1-ef80-40b2-b977-3fe6c22f0b38)
 
 Because the project is created as not standalone component, please be aware to add the required import after each package installation into the app.module.ts file. For instance:
 
 How to activate the angular material UI package:
-[picture here]
+
+![Screenshot from 2025-01-09 07-46-53](https://github.com/user-attachments/assets/95a5f881-21ca-43c7-8410-5b2cadafd771)
 
 How to add in each of the needed angular material UI components:
-[other picture here]
+
+![Screenshot from 2025-01-09 07-51-04](https://github.com/user-attachments/assets/ec43ee70-b791-4370-af68-cebfe48c1715)
+
 
 b/ Tailwind CSS installation:
 
@@ -136,11 +136,14 @@ npx tailwindcss init
 
 - Open the tailwind.config.js file in your project directory and add the following code:
 
-[picture here]
+![Screenshot from 2025-01-09 08-59-31](https://github.com/user-attachments/assets/2f4ab90f-816a-40b7-b226-87ee5166ebfe)
+
 
 - Then edit the default styles.css file within the src/ to import the Tailwind CSS settings:
 
+![Screenshot from 2025-01-09 09-00-06](https://github.com/user-attachments/assets/920390d6-9351-4d79-ab35-ca30e4aa254e)
+
 
 ## Learn how to create/generate components & services for your Angular project:
-[Read this configuration file](`./angular_config.md`)
+[Read this configuration file](./angular_config.md)
 
