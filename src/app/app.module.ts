@@ -19,12 +19,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './layout/app_header/header.component';
+import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ThemeToggleIconComponent
   ],
   imports: [
     BrowserModule,
