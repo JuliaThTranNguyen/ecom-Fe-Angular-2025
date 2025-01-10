@@ -1,5 +1,5 @@
 import { Component, inject, Signal } from '@angular/core';
-import { Theme, ThemeService } from '../../services/theme.service';
+import { Theme, ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-theme-toggle-icon',

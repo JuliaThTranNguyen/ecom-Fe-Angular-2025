@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Cart } from './models/cart.model';
+import { CartService } from './services/cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +8,19 @@ import { Component } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'ecom-store';
+export class AppComponent implements OnInit{
+  cart: Cart = { items: [] };
 
+  constructor(
+    private cartService: CartService,
+  ) {}
+
+  ngOnInit() {
+    this.cartService.cart.subscribe((cart) => {
+      this.cart = cart;
+    });
   
 }
 
 
-console.log('Running from: app.component.ts. Status: 200');
+}

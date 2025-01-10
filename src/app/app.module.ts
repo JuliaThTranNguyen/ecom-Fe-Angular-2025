@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -23,19 +25,30 @@ import { HeaderComponent } from './layout/app_header/header.component';
 import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
 import { ProductComponent } from './pages/product/product.component';
 import { FooterComponent } from './layout/app_footer/footer/footer.component';
+import { ProductHeaderComponent } from './components/product/product-header/product-header.component';
+import { ProductCardComponent } from './components/product/product-card/product-card.component';
+import { FiltersComponent } from './components/product/filters/filters.component';
+import { CartService } from './services/cart/cart.service';
+import { ThemeService } from './services/theme/theme.service';
+import { ProductService } from './services/product/product.service';
+import { CategoryService } from './services/category/category.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ThemeToggleIconComponent,
+    FooterComponent,
     ProductComponent,
-    FooterComponent
+    ProductHeaderComponent,
+    ProductCardComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     MatSidenavModule,
     MatGridListModule,
     MatMenuModule,
@@ -49,11 +62,16 @@ import { FooterComponent } from './layout/app_footer/footer/footer.component';
     MatPaginatorModule,
     MatBadgeModule,
     MatSnackBarModule,
-  
+
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(), 
+    CartService,
+    ThemeService,
+    ProductService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
