@@ -7,5 +7,12 @@ button {
   
   mat-icon {
     font-size: 24px;
+    .hover-blue:hover {
+        color: #60a5fa; /* Tailwind's blue-400 hex code */
+      }      
   }
   
+fa-icon {
+  
+    font-size: 26px;
+}

@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './layout/app_header/header.component';
 import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
 import { ProductComponent } from './pages/product/product.component';
-import { FooterComponent } from './layout/app_footer/footer/footer.component';
+import { FooterComponent } from './layout/app_footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { FooterComponent } from './layout/app_footer/footer/footer.component';
     MatPaginatorModule,
     MatBadgeModule,
     MatSnackBarModule,
+
   
   ],
   providers: [

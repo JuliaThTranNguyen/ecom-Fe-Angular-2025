@@ -1,0 +1,9 @@
+.app-container {
+  .app-inner-container {
+    @apply justify-between max-w-7xl mx-auto border-x border-gray-200 px-4 sm:px-6 lg:px-8;
+  }
+
+  .app-content {
+    @apply pb-3 shadow-md flex-1;
+  }
+}

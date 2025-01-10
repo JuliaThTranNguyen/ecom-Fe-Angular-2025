@@ -6,7 +6,6 @@ import { Theme, ThemeService } from '../../services/theme.service';
   standalone: false,
   
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 
