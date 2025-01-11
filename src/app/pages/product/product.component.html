@@ -1,1 +1,37 @@
-<p>product works!</p>
+<mat-drawer-container
+  [autosize]="true"
+  class="custom-drawer-container max-w-7xl mx-auto border-x"
+>
+  <!-- Side - Category Filters Content Section -->
+  <mat-drawer #drawer mode="side" [(opened)]="drawerOpened" class="p-6">
+    <app-product-filter
+      (showCategory)="onShowCategory($event)"
+    ></app-product-filter>
+  </mat-drawer>
+
+  <!-- Main Content Section -->
+  <mat-drawer-content class="p-4">
+    <app-product-header
+      (updatedLayout)="onUpdatedLayout($event)"
+      (toggleFilter)="toggleDrawer()"
+    ></app-product-header>
+
+    {{ category }} {{ cur_layout }}
+
+    <!-- Display list product -->
+    <mat-grid-list
+      [cols]="cur_layout"
+      [rowHeight]="rowHeight + 'px'"
+      gutterSize="8px"
+    >
+      <mat-grid-tile *ngFor="let item of [1, 2, 3, 4, 5]">
+        <!-- Display product card-->
+        <app-product-card
+          class="w-full py-0"
+          [fullWidthMode]="cur_layout === 1"
+        >
+        </app-product-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>

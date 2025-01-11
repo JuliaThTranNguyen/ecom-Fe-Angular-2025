@@ -1,16 +1,20 @@
 <!-- main layout -->
-<div class="app-container">
+<div class="app-container cursor-pointer">
   <div class="app-inner-container">
     <!-- header section -->
-    <div class="app-content">
+    <div class="app-content pt-2">
       <app-header></app-header>
+    </div>
 
-      <!-- body section -->
+    <!-- body section -->
+    <div class="flex-grow py-10 max-h-full">
       <router-outlet></router-outlet>
       <p>Running from: app.component.html</p>
     </div>
-
     <!-- footer section -->
-    <app-footer></app-footer>
+    <div class="app-footer pt-20">
+      <app-footer></app-footer>
+    </div>
+    
   </div>
 </div>

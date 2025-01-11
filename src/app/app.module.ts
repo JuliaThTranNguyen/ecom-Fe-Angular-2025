@@ -21,16 +21,28 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './layout/app_header/header.component';
 import { ThemeToggleIconComponent } from './components/theme-toggle-icon/theme-toggle-icon.component';
-import { ProductComponent } from './pages/product/product.component';
 import { FooterComponent } from './layout/app_footer/footer.component';
+import { ProductHeaderComponent } from './components/product/product-header/product-header.component';
+import { ProductComponent } from './pages/product/product.component';
+import { FilterComponent } from './components/product/filter/filter.component';
+import { ProductCardComponent } from './components/product/product-card/product-card.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { provideHttpClient } from '@angular/common/http';
+import { CartService } from './services/cart/cart.service';
+import { ThemeService } from './services/theme/theme.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ThemeToggleIconComponent,
+    FooterComponent,
+    ProductHeaderComponent,
     ProductComponent,
-    FooterComponent
+    FilterComponent,
+    ProductCardComponent,
+    CartComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -54,7 +66,10 @@ import { FooterComponent } from './layout/app_footer/footer.component';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(), 
+    CartService,
+    ThemeService,
   ],
   bootstrap: [AppComponent]
 })

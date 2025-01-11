@@ -147,3 +147,12 @@ npx tailwindcss init
 ## Learn how to create/generate components & services for your Angular project:
 [Read this configuration file](./angular_config.md)
 
+## How to work with Stripe payment integration:
+
+Install the Stripe NPM package:
+
+```bash
+npm install @stripe/stripe-js
+```
+
+Navigate to your Stripe account and create a new test account. Then, create a new secret key and publishable key. The secret key is used to authenticate requests from your server to Stripe, while the publishable key is used to generate tokens to authorize payments. You can find the secret key and publishable key in the Stripe dashboard.

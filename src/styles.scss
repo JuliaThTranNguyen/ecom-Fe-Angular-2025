@@ -1,6 +1,6 @@
 /*Author: TR.Hien - January 2025*/
 /*Apply Angular Material UI for theming purposes*/
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 /* Adding Tailwind CSS imports*/
 @tailwind base;
@@ -9,20 +9,31 @@
 
 /*----------------------------------------------------------*/
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-
+/*----------------------------------------------------------*/
+/* Apply Angular Material theme */
 html {
   color-scheme: light;
-  @include mat.theme((
-    color: mat.$violet-palette,
-  ));
+  @include mat.theme(
+    (
+      color: mat.$blue-palette,
+    )
+  );
 }
 
 html.dark-mode {
-    color-scheme: dark;
-    @include mat.theme((
-      color: mat.$blue-palette,
-    ));
-  }
+  color-scheme: dark;
+  @include mat.theme(
+    (
+      color: mat.$violet-palette,
+    )
+  );
+}

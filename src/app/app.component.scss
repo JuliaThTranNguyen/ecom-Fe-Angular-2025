@@ -6,4 +6,8 @@
   .app-content {
     @apply pb-3 shadow-md flex-1;
   }
+
+  :hover {
+    @apply cursor-pointer;
+  }
 }
