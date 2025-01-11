@@ -1,4 +1,4 @@
-<mat-card [ngClass]="{ 'text-center': !fullWidthMode }" appearance="outlined">
+<mat-card *ngIf="product" [ngClass]="{ 'text-center': !fullWidthMode }" appearance="outlined">
   <mat-card-header>
     <div class="flex justify-between w-full">
       <!-- Left side content (name, description, category title) -->
@@ -15,9 +15,11 @@
           'h-[150px] w-[150px] mx-auto': !fullWidthMode,
           'h-[200px] w-[auto] ml-4': fullWidthMode
         }"
-        src="https://placehold.co/150x150/png"
-        alt="product img"
+        [src]="product.image"
+        alt="{{product.title}}"
         [style.object-fit]="'cover'"
+        [style.height]="'150px'"      
+        [style.width]="'auto'"   
         [routerLink]="['/product-details']"
       />
     </div>
@@ -28,17 +30,17 @@
     *ngIf="!fullWidthMode"
     class="truncate hover:whitespace-normal w-full mt-2 px-4 py-0"
   >
-    <mat-card-title>Product Name</mat-card-title>
-    <mat-card-subtitle>Category Title</mat-card-subtitle>
-    <p>Description</p>
+    <mat-card-title>{{product.title}} </mat-card-title>
+    <mat-card-subtitle>{{product.category}} </mat-card-subtitle>
+    <p>{{product.description}}</p>
   </mat-card-content>
 
   <mat-card-actions class="text-sm flex justify-between items-center mb-4">
     <div class="flex justify-between">
       <span class="text-blue-600 font-bold ml-2 mt-3">
-        {{ "150" | currency : "€" }}
+        {{ product.price | currency : "€" }}
       </span>
-      <button mat-button class="mb-1">
+      <button mat-button class="mb-1" (click)="onAddToCart()">
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
     </div>

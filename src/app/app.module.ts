@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -27,9 +28,11 @@ import { ProductComponent } from './pages/product/product.component';
 import { FilterComponent } from './components/product/filter/filter.component';
 import { ProductCardComponent } from './components/product/product-card/product-card.component';
 import { CartComponent } from './pages/cart/cart.component';
-import { provideHttpClient } from '@angular/common/http';
+
 import { CartService } from './services/cart/cart.service';
 import { ThemeService } from './services/theme/theme.service';
+import { CategoryService } from './services/category/category.service';
+import { ProductService } from './services/product/product.service';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,8 @@ import { ThemeService } from './services/theme/theme.service';
     provideHttpClient(), 
     CartService,
     ThemeService,
+    CategoryService,
+    ProductService,
   ],
   bootstrap: [AppComponent]
 })

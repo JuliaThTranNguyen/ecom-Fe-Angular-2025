@@ -123,15 +123,15 @@
   
     <!-- Continue Shopping Button below the table -->
     <div class="mt-4 text-center">
-      <button mat-raised-button routerLink="/home">Continue Shopping</button>
+      <button mat-raised-button routerLink="/products">Continue Shopping</button>
     </div>
   </mat-card>
   
   <!-- Empty Cart message and Start Shopping Button -->
   <mat-card *ngIf="!cart.items.length" class="mx-auto my-3 max-w-7xl">
     <!-- Continue Shopping Button below the table -->
-    <div class="mt-4 text-center flex justify-center">
-      <span> Your cart is empty.</span>
-      <button mat-raised-button routerLink="/home">Continue Shopping</button>
+    <div class=" flex-col mt-4 text-center flex justify-center p-2">
+      <span class="p-10"> Your cart is empty.</span>
+      <button mat-raised-button routerLink="/products">Continue Shopping</button>
     </div>
   </mat-card>

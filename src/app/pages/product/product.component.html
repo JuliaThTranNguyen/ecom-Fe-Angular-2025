@@ -14,24 +14,38 @@
     <app-product-header
       (updatedLayout)="onUpdatedLayout($event)"
       (toggleFilter)="toggleDrawer()"
+      (sortChange)="onSortChanged($event)" 
     ></app-product-header>
 
     {{ category }} {{ cur_layout }}
 
     <!-- Display list product -->
     <mat-grid-list
+     *ngIf="products && products.length > 0"
       [cols]="cur_layout"
       [rowHeight]="rowHeight + 'px'"
       gutterSize="8px"
     >
-      <mat-grid-tile *ngFor="let item of [1, 2, 3, 4, 5]">
+      <mat-grid-tile *ngFor="let product of pagedProducts">
         <!-- Display product card-->
         <app-product-card
+         (addToCart)="onAddToCart($event)"
+         [product]="product"
           class="w-full py-0"
           [fullWidthMode]="cur_layout === 1"
         >
         </app-product-card>
       </mat-grid-tile>
     </mat-grid-list>
+
+     <!-- Add paginator at the bottom -->
+     <mat-paginator
+     class="mt-20"
+     [length]="totalItems"
+     [pageSize]="pageSize"
+     [pageSizeOptions]="[ 12, 20, 25, 30]"
+     (page)="onPageChange($event)"
+     aria-label="Select page"
+   ></mat-paginator>
   </mat-drawer-content>
 </mat-drawer-container>
