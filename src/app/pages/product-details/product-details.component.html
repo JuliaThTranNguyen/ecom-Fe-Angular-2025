@@ -1,0 +1,114 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE PRODUCT PAGE -->
+<mat-drawer-container
+  [autosize]="true"
+  class="custom-drawer-container max-w-7xl mx-auto border-x"
+>
+  <!-- TOP & MAIN CONTENT SECTION -->
+  <mat-drawer-content class="py-20 px-8">
+    <div class="flex h-2/3">
+      <!-- LEFT SIDE: IMG SIDE -->
+      <div class="w-1/3 p-4">
+        <img
+          class="object-cover w-full h-full rounded-lg shadow-sm"
+          [src]="product?.image || 'https://placehold.co/300x300.png'"
+          alt="{{ product?.title }} image"
+        />
+      </div>
+
+      <!-- RIGHT SIDE: PRODUCT DATA -->
+      <div class="w-2/3 p-4 flex flex-col justify-between">
+        <h2 class="text-2xl font-semibold">{{ product?.title }}</h2>
+        <mat-card-subtitle>{{ product?.category?.name }}</mat-card-subtitle>
+        <div class="my-4">
+          <p class="text-lg">{{ product?.description }}</p>
+        </div>
+
+        <mat-card-actions
+          class="text-sm flex justify-between items-center mb-4"
+        >
+          <div class="flex justify-between">
+            <span class="text-blue-600 font-bold ml-2 mt-3">
+              {{ product?.price | currency : "€" }}
+            </span>
+            <div>
+              <span
+                *ngIf="product?.stock !== 0"
+                class="text-green-600 font-bold ml-2 mt-3"
+              >
+                In stock ({{ product?.stock }} left)
+              </span>
+              <span
+                *ngIf="product?.stock === 0"
+                class="text-red-600 font-bold ml-2 mt-3"
+              >
+                Out of stock
+              </span>
+            </div>
+
+            <button
+              mat-button
+              class="mb-1 ml-8"
+              (click)="onAddToCart(product!)"
+              [disabled]="!product"
+            >
+              <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+          </div>
+        </mat-card-actions>
+
+        <!-- STOCK MESSAGE -->
+        <div *ngIf="stockMessage" class="text-red-600 font-semibold mt-2">
+          {{ stockMessage }}
+        </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+
+  <!-- BOTTOM SECTION: RANDOM LIST OF 4 PRODUCTS -->
+  <mat-drawer-content>
+    <mat-card
+      class="w-full py-12 px-2 bg-gray-100 shadow-md rounded-xl flex h-1/3"
+    >
+      <div class="flex items-center pb-5">
+        <h3 class="text-sm font-semibold" routerLink="/products">
+          Other Products
+        </h3>
+
+        <!-- ARROW ICON -->
+        <mat-icon
+          matTooltip="View more products"
+          class="cursor-pointer hover:text-blue-500 ml-2"
+          routerLink="/products"
+        >
+          arrow_forward
+        </mat-icon>
+      </div>
+
+      <div class="flex space-x-1 items-center">
+        <ng-container *ngFor="let item of randomProducts">
+          <mat-card
+            class="w-1/4 cursor-pointer hover:shadow-lg transition-shadow duration-300 h-[250px] flex flex-col justify-between"
+            [routerLink]="['/product-details', item.productId]"
+          >
+            <!-- IMG -->
+            <div class="h-[150px] flex justify-center items-center">
+              <img
+                [src]="item.image || 'https://placehold.co/150x150'"
+                alt="{{ item.title }}"
+                class="object-cover rounded-md h-full w-auto mx-auto mt-2"
+              />
+            </div>
+
+            <!-- PRODUCT DATA -->
+            <mat-card-content class="w-full mt-2 px-4 py-0 text-center">
+              <mat-card-title class="truncate">{{ item.title }}</mat-card-title>
+              <mat-card-subtitle class="text-sm">
+                {{ item.stock > 0 ? "Stock: " + item.stock : "Out of Stock" }}
+              </mat-card-subtitle>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

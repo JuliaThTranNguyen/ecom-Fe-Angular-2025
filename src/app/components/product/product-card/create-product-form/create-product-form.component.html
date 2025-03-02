@@ -1,0 +1,108 @@
+<form
+  *ngIf="product"
+  (ngSubmit)="onSubmit()"
+  #productForm="ngForm"
+  class="space-y-6 p-6"
+>
+  <h2 class="text-2xl font-bold mb-4 ml-2">Create New Product</h2>
+
+  <!-- Display API error messages -->
+  <p class="text-red-500 font-bold font-serif" *ngIf="responseMessage">
+    {{ responseMessage }}. Please try again!
+  </p>
+
+  <div class="bg-gray-100 p-6 rounded-lg">
+    <!-- Product Title -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label class="text-black">Product Title</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.title"
+        placeholder="Enter product title"
+        name="title"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <!-- Product Description -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label class="text-black">Product Description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="product.description"
+        placeholder="Enter product description"
+        name="description"
+        required
+        class="w-full p-2"
+        rows="4"
+      ></textarea>
+    </mat-form-field>
+
+    <!-- Product Price -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label class="text-black">Price</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.price"
+        placeholder="Enter product price"
+        name="price"
+        type="number"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <!-- Product Image URL -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label class="text-black">Product Image URL</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.image"
+        placeholder="Enter product image URL"
+        name="image"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <!-- Stock Quantity -->
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label class="text-black">Stock Quantity</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.stock"
+        placeholder="Enter stock quantity"
+        name="stock"
+        type="number"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <!-- Category Selection -->
+    <app-category-dropdown
+      [categories]="categories"
+      (categorySelected)="onCategorySelected($event)"
+      (categoryAdded)="onCategoryAdded($event)"
+    ></app-category-dropdown>
+
+    <!-- Submit and Cancel Buttons -->
+    <div class="flex gap-4 mt-8 ml-2">
+      <button
+        type="submit"
+        [disabled]="!productForm.form.valid"
+        class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-red-600 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

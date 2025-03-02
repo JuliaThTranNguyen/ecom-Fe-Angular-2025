@@ -1,0 +1,156 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE LOGIN FORM -->
+
+<mat-card
+  class="max-w-md mx-auto p-6 border rounded-lg shadow-md"
+>
+  <!-- FORM TITLE -->
+  <h2 class="text-2xl font-bold mb-4 text-center">Sign Up</h2>
+
+  <!-- FORM CONTROL & INPUT VALUES -->
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- EMAIL INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Email</label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <mat-error
+        *ngIf="
+          signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+        "
+      >
+        Valid email is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- PASSWORD INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Password</label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Toggle password visibility'"
+      >
+        <mat-icon>{{
+          hidePassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          signupForm.get('password')?.invalid &&
+          signupForm.get('password')?.touched
+        "
+      >
+        Valid password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- CONFIRM PASSWORD INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Confirm Password</label>
+      <input
+        matInput
+        [type]="hideConfirmPassword ? 'password' : 'text'"
+        formControlName="confirmPassword"
+        placeholder="Re-enter your password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hideConfirmPassword = !hideConfirmPassword"
+        [attr.aria-label]="'Toggle confirm password visibility'"
+      >
+        <mat-icon>{{
+          hideConfirmPassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="signupForm.get('confirmPassword')?.touched">
+        {{ getConfirmPasswordError() }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- FIRST NAME INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>First Name</label>
+      <input
+        matInput
+        type="text"
+        formControlName="firstName"
+        placeholder="Enter your first name"
+      />
+      <mat-error
+        *ngIf="
+          signupForm.get('firstName')?.invalid &&
+          signupForm.get('firstName')?.touched
+        "
+      >
+        First name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- LAST NAME INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Last Name</label>
+      <input
+        matInput
+        type="text"
+        formControlName="lastName"
+        placeholder="Enter your last name"
+      />
+      <mat-error
+        *ngIf="
+          signupForm.get('lastName')?.invalid &&
+          signupForm.get('lastName')?.touched
+        "
+      >
+        Last name is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- API ERR MESSAGE FROM BE SERVER -->
+    <p class="text-red-500 font-bold font-serif" *ngIf="responseMessage">
+      {{ responseMessage }}. Please try again !
+    </p>
+
+    <!-- FORM COMPLETION VALIDATION MESSAGE -->
+    <p
+      *ngIf="signupForm.invalid"
+      class="text-primary-300 text-sm font-serif text-center mt-2"
+    >
+      Please complete the form before sending.
+    </p>
+
+    <!-- SUBMIT BUTTON -->
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      class="w-full mt-4"
+      [disabled]="signupForm.invalid || loadingSuccess"
+    >
+      {{ loadingSuccess ? "Signing up..." : "Sign Up" }}
+    </button>
+
+    <!-- LOGIN NAVIGATOR -->
+    <p class="mt-4 text-center text-sm">
+      Already have an account?
+      <a
+        routerLink="/user-login"
+        class="text-blue-500 font-extrabold hover:underline"
+        >Log in here</a
+      >
+    </p>
+  </form>
+</mat-card>

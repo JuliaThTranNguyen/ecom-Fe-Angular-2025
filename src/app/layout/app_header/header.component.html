@@ -1,0 +1,113 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE APP TOP HEADER -->
+<mat-toolbar
+  class="mx-auto border-x justify-between shadow-sm flex items-center pb-4"
+>
+  <!-- STORE  LINKS &  TOGGLE ICONS SECTION -->
+  <div class="flex items-center">
+    <a class="mr-4 text-xl" routerLink="/">2nd-Store</a>
+
+    <!-- MAIN DROPDOWN MENU -->
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="mainMenu"
+      class="text-sm p-1"
+      aria-label="Menu"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #mainMenu="matMenu">
+      <!-- PRODUCT MENU -->
+      <button mat-menu-item [matMenuTriggerFor]="products">Products</button>
+      <mat-menu #products="matMenu">
+        <button mat-menu-item routerLink="/products">All Products</button>
+        <button mat-menu-item routerLink="/deals">Promotions</button>
+      </mat-menu>
+
+      <!-- CATEGORY MENU -->
+      <button mat-menu-item [matMenuTriggerFor]="categories">Categories</button>
+      <mat-menu #categories="matMenu">
+        <button mat-menu-item routerLink="/categories">All Categories</button>
+        <button mat-menu-item routerLink="/deals">Promotions</button>
+      </mat-menu>
+
+      <!-- EXPLORE MENU -->
+      <button mat-menu-item [matMenuTriggerFor]="explore">
+        Explore Our Services
+      </button>
+      <mat-menu #explore="matMenu">
+        <button mat-menu-item routerLink="/news">News</button>
+        <button mat-menu-item routerLink="/contacts">Contact</button>
+      </mat-menu>
+    </mat-menu>
+  </div>
+
+  <div class="flex items-center">
+    <!-- CART BUTTON -->
+    <button mat-icon-button [matMenuTriggerFor]="cart">
+      <mat-icon
+        [matBadge]="totalQuantity"
+        [matBadgeHidden]="!totalQuantity"
+        matBadgeColor="warn"
+        aria-hidden="false"
+        aria-label="cart icon"
+        >shopping_cart</mat-icon
+      >
+    </button>
+    <mat-menu #cart="matMenu">
+      <div class="p-3 divide-y divide-solid space-x-5">
+        <div class="pb-3 flex justify-between">
+          <span class="mr-16">{{ totalQuantity }} item(s)</span>
+          <a routerLink="cart">View Cart</a>
+        </div>
+        <div class="py-3">
+          <div
+            *ngFor="let item of cartItems"
+            class="flex justify-between font-light mb-2"
+          >
+            {{ item.name }} x {{ item.quantity }}
+            <span class="font-bold">{{ item.price | currency : "€" }}</span>
+          </div>
+        </div>
+        <div class="flex justify-between py-3 font-light">
+          Total:
+          <span class="font-bold">
+            {{ totalPrice | currency : "€" }}
+          </span>
+        </div>
+        <div class="pt-3 flex justify-between">
+          <button
+            (click)="onClearCart()"
+            class="bg-rose-500 text-white rounded-full w-9 h-9"
+          >
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
+          <button
+            routerLink="cart"
+            class="bg-blue-500 text-white rounded-full w-9 h-9"
+          >
+            <mat-icon>pageview</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-menu>
+
+    <!-- PROFILE BUTTON -->
+    <button mat-icon-button [matMenuTriggerFor]="profile">
+      <mat-icon aria-hidden="false" aria-label="profile icon"
+        >account_circle</mat-icon
+      >
+    </button>
+    <mat-menu #profile="matMenu">
+      <app-logout-button></app-logout-button>
+      <!-- <button mat-menu-item routerLink="/user-login">Login</button>
+      <button mat-menu-item routerLink="/user-register">Signup</button> -->
+    </mat-menu>
+
+    <!-- USER LOGOUT SECTION -->
+    
+
+    <!-- THEME TOGGLE ICON SECTION -->
+    <app-theme-toggle-icon class="mt-0"></app-theme-toggle-icon>
+  </div>
+</mat-toolbar>

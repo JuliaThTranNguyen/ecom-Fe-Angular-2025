@@ -1,0 +1,8 @@
+<!-- Only show if user is ADMIN -->
+<button
+  *ngIf="isAdmin"
+  class="border-2 border-gray-300 border-spacing-2 rounded-lg px-4 py-1 text-xs font-bold flex items-center gap-2 hover:bg-gray-300 hover:text-blue-900"
+  (click)="openEditDialog()"
+>
+  <mat-icon>add_circle</mat-icon> Add Product
+</button>

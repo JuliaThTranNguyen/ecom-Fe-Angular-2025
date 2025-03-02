@@ -1,0 +1,24 @@
+<mat-form-field appearance="fill" class="w-full">
+  <mat-label>Select Category</mat-label>
+  <mat-select
+    [(ngModel)]="selectedCategoryId"
+    (selectionChange)="onCategoryChange()"
+  >
+    <mat-option>
+      <button
+        type="button"
+        (click)="openCategoryDialog()"
+        value="create"
+        class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        Create New Category
+      </button>
+    </mat-option>
+    <mat-option
+      *ngFor="let category of categories"
+      [value]="category.categoryId"
+    >
+      {{ category.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

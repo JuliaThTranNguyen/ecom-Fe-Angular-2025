@@ -1,0 +1,101 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE LOGIN FORM -->
+
+<mat-card class="max-w-md mx-auto p-6 border rounded-lg shadow-md">
+  <!--  FORM TITLE -->
+  <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+
+  <!-- FORM CONTROL & INPUT VALUES -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- EMAIL INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Email</label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <mat-error
+        *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        "
+      >
+        Valid email is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- PASSWORD INPUT -->
+    <mat-form-field appearance="outline" class="w-full">
+      <label>Password</label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <button
+        mat-icon-button
+        type="button"
+        matSuffix
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Toggle password visibility'"
+      >
+        <mat-icon>{{
+          hidePassword ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+      >
+        Password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- FORM COMPLETION VALIDATION MESSAGE -->
+    <p
+      *ngIf="loginForm.invalid"
+      class="text-primary-300 text-sm font-serif text-center mt-2"
+    >
+      Please complete the form before sending.
+    </p>
+
+    <!-- API ERR MESSAGE FROM BE SERVER -->
+    <p class="text-red-500 font-bold font-serif" *ngIf="responseMessage">
+      {{ responseMessage }}. Please try again !
+    </p>
+
+    <!-- SUBMIT BUTTON -->
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      class="w-full mt-4"
+      [disabled]="loginForm.invalid || loadingSuccess"
+    >
+      {{ loadingSuccess ? "Logging in..." : "Login" }}
+    </button>
+
+    <!-- SIGNUP NAVIGATOR -->
+    <p class="mt-4 text-center text-sm">
+      Don't have an account?
+      <a
+        routerLink="/user-register"
+        class="text-blue-500 font-extrabold hover:underline"
+        >Sign up here</a
+      >
+    </p>
+
+    <!-- RESET PASSWORD NAVIGATOR -->
+    <p class="mt-4 text-center text-sm" *ngIf="responseMessage">
+      Did you forgot your password?
+      <a
+        routerLink="/user-reset-password"
+        class="text-blue-500 font-extrabold hover:underline"
+        >Reset your password here</a
+      >
+    </p>
+  </form>
+</mat-card>

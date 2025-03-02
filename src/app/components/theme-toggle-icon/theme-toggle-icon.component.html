@@ -1,0 +1,7 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE THEME TOGGLE ICON -->
+ 
+<button mat-icon-button (click)="toggleTheme()"  aria-label="Toggle theme">
+    <mat-icon *ngIf="currentTheme() === 'light'">wb_sunny</mat-icon>
+    <mat-icon *ngIf="currentTheme() === 'dark'">nights_stay</mat-icon>
+  </button>
+  

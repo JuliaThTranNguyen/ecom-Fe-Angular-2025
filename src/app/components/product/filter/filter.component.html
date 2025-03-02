@@ -1,0 +1,79 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE FILTER COMPONENT OF THE PRODUCT PAGE -->
+
+<mat-expansion-panel *ngIf="categories && categories.length > 0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>CATEGORIES LIST</mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <!-- CATEGORY FILTER OPTIONS -->
+  <mat-selection-list
+    #categorySelectionList
+    (selectionChange)="onSelectionChange($event)"
+    class="border-2 border-grey-500 rounded-lg p-2 shadow-sm"
+  >
+    <mat-list-option
+      *ngFor="let category of categories"
+      [value]="category"
+      class="border-b border-gray-300 last:border-b-0 p-2 hover:bg-blue-100 transition"
+    >
+      {{ category }}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <!-- RESET BUTTON -->
+  <button
+    mat-stroked-button
+    (click)="onResetFilters()"
+    class="mt-3 w-full text-blue-500 border-blue-500 hover:bg-blue-100"
+  >
+    Reset Filters
+  </button>
+</mat-expansion-panel>
+
+<!-- SORTING BY PRICES  -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>SORT BY PRICE</mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-selection-list
+    #sortSelectionList
+    (selectionChange)="onSortChange($event)"
+  >
+    <mat-list-option value="priceAsc">From Low to High</mat-list-option>
+    <mat-list-option value="priceDesc">From High to Low</mat-list-option>
+  </mat-selection-list>
+
+  <!-- RESET BUTTON -->
+  <button
+    mat-stroked-button
+    (click)="onResetFilters()"
+    class="mt-3 w-full text-blue-500 border-blue-500 hover:bg-blue-100"
+  >
+    Reset Filters
+  </button>
+</mat-expansion-panel>
+
+<!-- SORTING BY STOCK AVAILABLITIES  -->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>STOCK AVAILABLITIES</mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-selection-list
+    #sortSelectionList
+    (selectionChange)="onSortChange($event)"
+  >
+    <mat-list-option value="stockAsc">Out Of Stock</mat-list-option>
+    <mat-list-option value="stockDesc">In Stock</mat-list-option>
+  </mat-selection-list>
+
+  <!-- RESET BUTTON -->
+  <button
+    mat-stroked-button
+    (click)="onResetFilters()"
+    class="mt-3 w-full text-blue-500 border-blue-500 hover:bg-blue-100"
+  >
+    Reset Filters
+  </button>
+</mat-expansion-panel>

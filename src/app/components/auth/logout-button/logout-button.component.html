@@ -1,0 +1,16 @@
+<!-- AUTHOR: TR.HIEN - THIS IS THE HTML FILE FOR THE LOGOUT BUTTON -->
+
+<!-- ONLY IF ADMIN IS LOGGED IN -->
+<div *ngIf="isLoggedIn">
+  <button mat-menu-item routerLink="/user-profile">Profile</button>
+  <button mat-menu-item *ngIf="isAdminRole" routerLink="/auth/users">
+    Accounts Management
+  </button>
+  <button mat-menu-item (click)="onLogout()">Logout</button>
+</div>
+
+<!-- ONLY FOR USER ROLES -->
+<div *ngIf="!isLoggedIn">
+  <button mat-menu-item routerLink="/user-login">Login</button>
+  <button mat-menu-item routerLink="/user-register">Signup</button>
+</div>

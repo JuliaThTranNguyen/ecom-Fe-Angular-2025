@@ -1,0 +1,38 @@
+<!-- AUTHOR: TR.HIEN - THIS IS THE USER PROFILE CARD -->
+
+<div class="flex items-center justify-center min-h-screen p-6">
+    <mat-card class="w-full max-w-md p-6 shadow-lg rounded-2xl">
+      <h2 class="text-2xl font-semibold text-center text-primary-800">User Profile</h2>
+  
+      <!-- LOADING SPINNER -->
+      <div *ngIf="loading" class="flex flex-col items-center gap-4">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        <p class="text-gray-600">Loading profile...</p>
+      </div>
+  
+      <!-- ERROR MESSAGE -->
+      <div *ngIf="errorMessage" class="p-3 mt-3 text-center text-red-600 bg-red-100 rounded-md">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- PROFILE VIEW -->
+      <div *ngIf="userProfile && !isEditing" class="flex flex-col items-center mt-6">
+        <img *ngIf="userProfile.avatar" [src]="userProfile.avatar" alt="User Avatar"
+          class="w-24 h-24 rounded-full border-4 border-gray-600 shadow-md">
+        <div class="mt-8 text-center font-serif">
+          <p class="text-lg font-semibold">User name: {{ userProfile.firstName }} {{ userProfile.lastName }}</p>
+          <p class="text-primary-600 mb-4">Email address: {{ userProfile.email }}</p>
+          <span class="px-3 py-1 mt-8 text-sm font-semibold text-white bg-blue-500 rounded-full">
+            {{ userProfile.role | titlecase }}
+          </span>
+        </div>
+        <button mat-raised-button color="primary" class="mt-8 py-10 w-full" (click)="onEdit()">Edit Profile</button>
+      </div>
+  
+      <!-- EDIT FORM -->
+      <profile-edit-form *ngIf="isEditing" [userProfile]="userProfile!" (saveProfile)="onSave($event)"
+        (cancelEdit)="onCancel()"></profile-edit-form>
+  
+    </mat-card>
+  </div>
+  

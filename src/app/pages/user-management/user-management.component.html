@@ -1,0 +1,72 @@
+<!-- AUTHOR: TR.HIEN - THIS IS THE USERS MANAGEMENT PAGE ALLOWS ADMIN TO CONTROL ALL PROFILES DATA-->
+
+<mat-drawer-container
+  [autosize]="true"
+  class="custom-drawer-container max-w-7xl mx-auto border-x"
+>
+  <div class="container mx-auto p-6">
+    <h2 class="text-2xl font-semibold text-center mb-6">
+      All Users Management
+    </h2>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      <p>Loading users...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="text-red-600 text-center">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Users Table -->
+    <table
+      *ngIf="!loading && users.length"
+      class="w-full border-collapse border p-2 border-gray-300"
+    >
+      <thead>
+        <tr>
+          <th class="border p-2">Avatar</th>
+          <th class="border p-2">Name</th>
+          <th class="border p-2">Email</th>
+          <th class="border p-2">Role</th>
+          <th class="border p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="border p-2 flex items-center justify-center">
+            <img
+              *ngIf="user.avatar"
+              [src]="user.avatar"
+              alt="User Avatar"
+              class="w-22 h-20 rounded-full"
+            />
+          </td>
+          <td class="border p-2">{{ user.firstName }} {{ user.lastName }}</td>
+          <td class="border p-2">{{ user.email }}</td>
+          <td class="border p-2">{{ user.role }}</td>
+          <td class="border p-2 text-center">
+            <button
+              *ngIf="user.role !== 'ROLE_ADMIN'"
+              mat-icon-button
+              color="warn"
+              (click)="confirmDelete(user.userId)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[10, 16, 24, 32, 50, 100]"
+      (page)="onPaginatorChange($event)"
+    >
+    </mat-paginator>
+  </div>
+</mat-drawer-container>

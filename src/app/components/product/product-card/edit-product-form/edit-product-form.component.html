@@ -1,0 +1,95 @@
+<form (ngSubmit)="onSave()" *ngIf="product" class="space-y-5 p-6">
+  <h2 class="text-2xl font-bold mb-4">Edit Product Form</h2>
+
+  <div class="bg-gray-100 p-6 rounded-lg">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Product title</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.title"
+        placeholder="Product title"
+        name="title"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Product category</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="product.category.name"
+        placeholder="Product category name"
+        name="categor.name"
+        required
+        class="w-full p-2"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Product description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="product.description"
+        placeholder="Product description"
+        name="description"
+        required
+        class="w-full p-2 resize-y"
+        rows="5"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Product Image URL</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="product.image"
+        placeholder="Product image URL link"
+        name="image"
+        required
+        class="w-full p-2"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Price</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.price"
+        placeholder="Product price"
+        name="price"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Remaining Stock</mat-label>
+      <input
+        matInput
+        [(ngModel)]="product.stock"
+        placeholder="Units in Stock"
+        name="stock"
+        required
+        class="w-full p-2"
+      />
+    </mat-form-field>
+
+    <div class="flex gap-4 mt-4">
+      <button
+        type="submit"
+        [disabled]="!product"
+        class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-red-600 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>

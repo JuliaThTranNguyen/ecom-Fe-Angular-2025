@@ -1,0 +1,57 @@
+<!-- AUTH:TR.HIEN - THIS IS THE HTML FILE FOR THE PRODUCT PAGE -->
+<mat-drawer-container
+  [autosize]="true"
+  class="custom-drawer-container max-w-7xl mx-auto border-x"
+>
+  <!--SIDE BAR - FOR CATEGORY FILTERS -->
+  <mat-drawer #drawer mode="side" [(opened)]="drawerOpened" class="p-6">
+    <app-product-filter
+      [categories]="categories"
+      (showCategory)="onShowCategory($event)"
+      (sortChange)="onSortChanged($event)"
+    ></app-product-filter>
+  </mat-drawer>
+
+  <!-- MAIN CONTENT SECTION -->
+  <mat-drawer-content class="p-4">
+    <app-product-header
+      (updatedLayout)="onUpdatedLayout($event)"
+      (toggleFilter)="toggleDrawer()"
+      (searchQueryChanged)="onSearchQueryChanged($event)"
+    ></app-product-header>
+
+    <!-- SHOW MESSAGE IF NO PRODUCTS FOUND -->
+    <div *ngIf="noProductsFound" class="text-center mt-10 text-gray-500">
+      <p class="text-lg font-semibold">No products found</p>
+    </div>
+
+    <!-- DISPLAY LIST OF PRODUCTS -->
+    <mat-grid-list
+      *ngIf="products && products.length > 0"
+      [cols]="cur_layout"
+      [rowHeight]="rowHeight + 'px'"
+      gutterSize="8px"
+    >
+      <mat-grid-tile *ngFor="let product of pagedProducts">
+        <!-- DISPLAY PRODUCT CARD-->
+        <app-product-card
+          (addToCart)="onAddToCart($event)"
+          [product]="product"
+          class="w-full py-0"
+          [fullWidthMode]="cur_layout === 1"
+        >
+        </app-product-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- PAGINATOR SECTION -->
+    <mat-paginator
+      class="mt-20"
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[10,15,20,30,40,50]"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+    ></mat-paginator>
+  </mat-drawer-content>
+</mat-drawer-container>

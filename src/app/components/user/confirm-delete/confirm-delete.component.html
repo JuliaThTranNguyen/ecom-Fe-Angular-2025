@@ -1,0 +1,11 @@
+<!-- AUTHOR: TR.HIEN - THIS IS THE HTML FILE FOR THE CONFIRM DELETE POPUP -->
+
+<div class="p-6 text-center">
+  <h2 class="text-2xl font-bold text-red-600">Confirm Deletion</h2>
+  <p class="text-gray-600 mt-2">{{ data.message }}</p>
+
+  <div class="mt-4 flex justify-center gap-4">
+    <button mat-button color="warn" (click)="confirmDelete()">Delete</button>
+    <button mat-button color="primary" (click)="cancel()">Cancel</button>
+  </div>
+</div>

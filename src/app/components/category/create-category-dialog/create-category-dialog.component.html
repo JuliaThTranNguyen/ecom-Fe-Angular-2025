@@ -1,0 +1,49 @@
+<form (ngSubmit)="onSubmit()" #categoryForm="ngForm" class="space-y-4 p-6">
+  <h2 class="text-xl font-bold mb-4">Create New Category</h2>
+
+  <!-- Display API error messages -->
+  <p class="text-red-500 font-bold" *ngIf="responseMessage">
+    {{ responseMessage }}
+  </p>
+
+  <div class="bg-gray-100 p-6 rounded-lg">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Category Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="category.name"
+        placeholder="Enter category name"
+        name="name"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Category Image URL</mat-label>
+      <input
+        matInput
+        [(ngModel)]="category.image"
+        placeholder="Enter image URL"
+        name="image"
+        required
+      />
+    </mat-form-field>
+
+    <div class="flex gap-4 mt-4">
+      <button
+        type="submit"
+        [disabled]="!categoryForm.form.valid"
+        class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="bg-red-600 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>
