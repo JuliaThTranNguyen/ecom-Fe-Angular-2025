@@ -1,5 +1,10 @@
 # EcomStore
 
+### Current status: Error when deploying the Java Springboot + MySQL DB globally
+### Debugging status: On going status 
+### Solutions: AWS free tier & Google Cloud PLatform free tier
+### [View this BE repo here](https://github.com/JuliaThTranNguyen/java-ecom-backend2025)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
 --------------------------------------------------------------------
